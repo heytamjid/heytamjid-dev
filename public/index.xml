@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>My New Hugo Site</title>
+    <title>tamjid.me</title>
     <link>http://localhost:1313/</link>
-    <description>Recent content on My New Hugo Site</description>
+    <description>Recent content on tamjid.me</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 21 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 04 Mar 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Bleeding Hours</title>
+      <link>http://localhost:1313/posts/the-bleeding-hours/</link>
+      <pubDate>Tue, 04 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/the-bleeding-hours/</guid>
+      <description>&lt;p&gt;For days now, a strange sensation has taken root in me. It is as if I have been shot somehow, and blood is gushing through the gaps of my fingers in an unrelenting endless flow, without pause, without mercy, without any haste or hesitation, but with a measured, inevitable grace. And I can&amp;rsquo;t stop it in no means. It does not pool or clot, it simply leaves, abandoning the very me, slipping from each corridors of my body.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Dungeon Game on LeetCode : Finding The Right Question To Ask</title>
       <link>http://localhost:1313/posts/dungeon-game-on-leetcode/</link>

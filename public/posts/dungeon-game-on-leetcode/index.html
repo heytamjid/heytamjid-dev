@@ -3,7 +3,7 @@
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>My New Hugo Site/posts/dungeon-game-on-leetcode/</title>
+    <title>tamjid.me/posts/dungeon-game-on-leetcode/</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -35,8 +35,8 @@ In DP problems, the main part is to find out what to remember as Errichto said. 
             <div class="logo terminal-prompt">
               
               
-              <a href="http://localhost:1313/" class="no-style ">My New Hugo Site</a>:~# 
-              <a href='http://localhost:1313/posts'>posts</a>/<a href='http://localhost:1313/posts/dungeon-game-on-leetcode'>dungeon-game-on-leetcode</a>/</div></header>
+              <a href="http://localhost:1313/" class="no-style ">tamjid.me</a>:~# 
+              <a href='http://localhost:1313/posts/dungeon-game-on-leetcode/http://localhost:1313/posts'>posts</a>/<a href='http://localhost:1313/posts/dungeon-game-on-leetcode/http://localhost:1313/posts/dungeon-game-on-leetcode'>dungeon-game-on-leetcode</a>/</div></header>
           <nav class="terminal-menu">
             <ul vocab="https://schema.org/" typeof="BreadcrumbList">
                 
@@ -62,8 +62,7 @@ Mar. 21, 2024
 <p>Now, we can say, for each cell,</p>
 <blockquote>
 <p>initialHealth + cost (aka grid[i][j] that could be positive or negative) = finalHealth
-We have to calculate the initialHealth for each cell. Cost (i.e. power of orbs or demon) is given as input.</p>
-</blockquote>
+We have to calculate the initialHealth for each cell. Cost (i.e. power of orbs or demon) is given as input.</p></blockquote>
 <p>For the last cell i.e. [i-1][j-1], the finalHealth is 1.</p>
 <p>For the last column, [i][j] cell’s finalHealth will be the same as [i+1][j] cell’s initialHealth as that’s the only way to move towards princess (from [i][j] to [i+1][j] along with the last column.) If the initialHealth is calculated non-positive i.e. less than 1, we will rather say or save initialHealth required for that cell is 1 in the dp array. As initialHealth can’t be negative or 0, otherwise our knight will die.</p>
 <p>For the last row, [i][j] cell’s finalHealth will be the same as [i][j+1] cell’s initialHealth as that’s the only way to move towards princess (from [i][j] to [i][j+1] along wtih the last column.) If the initialHealth is calculated non-positive i.e. less than 1, we will rather say or save initialHealth required for that cell is 1 in the dp array. As initialHealth can’t be negative or 0, otherwise our knight will die.</p>
