@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on My New Hugo Site</title>
+    <link>http://localhost:1313/posts/</link>
+    <description>Recent content in Posts on My New Hugo Site</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 21 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Dungeon Game on LeetCode : Finding The Right Question To Ask</title>
+      <link>http://localhost:1313/posts/dungeon-game-on-leetcode/</link>
+      <pubDate>Thu, 21 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/dungeon-game-on-leetcode/</guid>
+      <description>&lt;p&gt;I have been solving DP problems for last 2 days and guess what, they are really cooool and fun to solve. Previously I didn’t enjoy this much while solving topic-wise problems on Prefix Sum or Sliding Window. &lt;a href=&#34;https://leetcode.com/problems/dungeon-game/description/&#34;&gt;Dungeon Game&lt;/a&gt; is my first solved bottom-up DP problem. It’s marked as hard, but I believe it is sort of quite medium level problem.&lt;/p&gt;&#xA;&lt;p&gt;In DP problems, the main part is to find out what to remember &lt;a href=&#34;https://youtu.be/YBSt1jYwVfU?si=VWSg2Xta6vAQrQXk&amp;amp;t=1090&#34;&gt;as Errichto said&lt;/a&gt;. And for that, you have to know the right question to ask.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
