@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>tamjid.me/posts/01-matrix/</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <meta name="googlebot" content="index,follow,snippet,archive">
+    <link rel="stylesheet" href="https://heytamjid.github.io/hugo-theme-console/css/terminal-0.7.4.min.css">
+    <link rel="stylesheet" href="https://heytamjid.github.io/hugo-theme-console/css/animate-4.1.1.min.css">
+    <link rel="stylesheet" href="https://heytamjid.github.io/hugo-theme-console/css/console.css">
+    
+      <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
+       <meta property="og:title" content="01 Matrix on LeetCode: Multi-Source BFS and Two-pass DP Solution" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://heytamjid.github.io/posts/01-matrix/" /><meta property="article:published_time" content="2025-03-08T00:00:00+00:00" />
+
+
+
+<meta name="twitter:title" content="01 Matrix on LeetCode: Multi-Source BFS and Two-pass DP Solution"/>
+<meta name="twitter:description" content="In Multi-source BFS, we start from multiple source nodes simultaneously instead of starting from a single source node, In this case, all the 0 cells act as the initial sources, and we expand outward in all directions. This works efficiently because BFS inherently explores all nodes layer by layer, guaranteeing that the first time we reach a cell, it is via the shortest possible path. Unlike the naive approach of running BFS separately for each 1 cell (which would be too slow), multi-source BFS spreads out from all 0s in parallel. Again, BFS processes each cell exactly once so this solution will run in O(m*n). As of the DP solution, the recursive approach must NOT create cyclic dependencies. When we are computing the distance for a cell, we are making recursive calls to all its neighbors, right?. But if two cells depend on each other, for example, cell A calls cell B, which in turn calls cell A (or another cell that eventually calls A) before A’s value is finalized, you’ll end up in an infinite loop or incorrect results because the dp value for A is still set to –1 when B checks it. In recursive DP, if we do not ensure that all dependent subproblems are solved before the current cell’s computation, the recursion can “chase its tail” or run infinitely and never reach a stable solution."/>
+
+</head>
+<body class="terminal">
+    <div class="container">
+        <div class="terminal-nav">
+          <header class="terminal-logo">
+            <div class="logo terminal-prompt">
+              
+              
+              <a href="https://heytamjid.github.io" class="no-style ">tamjid.me</a>:~# 
+              <a href='https://heytamjid.github.ioposts'>posts</a>/<a href='https://heytamjid.github.ioposts/01-matrix'>01-matrix</a>/</div></header>
+          <nav class="terminal-menu">
+            <ul vocab="https://schema.org/" typeof="BreadcrumbList">
+                
+                <li><a href="https://heytamjid.github.io/projects/" typeof="ListItem">projects/</a></li>
+                
+                <li><a href="https://heytamjid.github.io/posts/" typeof="ListItem">posts/</a></li>
+                
+                <li><a href="https://heytamjid.github.io/pasta/" typeof="ListItem">pasta/</a></li>
+                
+                <li><a href="https://heytamjid.github.io/reminders/" typeof="ListItem">ذكر/</a></li>
+                
+            </ul>
+          </nav>
+        </div>
+    </div>
+
+    <div class="container animated zoomIn fast" >
+        
+<h1>01 Matrix on LeetCode: Multi-Source BFS and Two-pass DP Solution</h1>
+
+Mar. 8, 2025
+
+
+<br/><br/>
+
+
+
+<div class="categories">
+    Categories: 
+    
+        <a href="/categories/problem-solving">problem-solving</a>
+    
+</div>
+
+
+
+
+<div class="tags">
+    Tags: 
+    
+        <a href="/tags/leetcode">leetcode</a>
+    
+</div>
+
+<br/><br/>
+
+<p>In this post, I will explore two different approaches to solve the <a href="https://leetcode.com/problems/01-matrix/description/">01 Matrix</a> problem on Leetcode.</p>
+<h2 id="breadth-first-search-bfs-approach">Breadth-first Search (BFS) Approach</h2>
+<p>At first, let’s have another glance to the typical BFS algorithm. It finds the shortest path from the source to all the nodes.</p>
+<pre tabindex="0"><code>1. Initialize an empty Queue (say q) and the solution data structure to be returned.
+2. Initialize non-sources (for all v ∈ G.V - {S})
+    - v.d = infinity (*d* denotes distance)
+    - v.color = white or visited [v] = false
+    - v.parent = NIL
+3. Initialize source(s)
+    - s.d = 0
+    - s.color = grey or visited [s] = true //grey means the node is on the frontier i.e. being explored currently
+    - s.parent = NIL
+4. Enqueue the source(s)
+5. WHILE the Queue is not empty:
+    1. Retrieve the front (say f) of the queue and also dequeue it.
+    2. Explore all the adjacent nodes //ensure not out-of-bound while coding
+        - For each UNVISITED and VALID nodes of f
+            - Update its data (distance, color/visited, parent)
+            - Push it to the q
+    3. Color it black //meaning this node is now behind the wavefront
+</code></pre><p>Here is a more formal presentation from the CLRS book:</p>
+<p><img src="/images/bfs-algo-clrs-book.png" alt="bfs-algo-clrs-textbook"></p>
+<p>So in the typical BFS, we are starting from a single source node and explore a graph or grid level by level, calculating the shortest distance from that source to all other nodes. Multi-source BFS, however, starts from multiple source nodes at the same time. Instead of running separate BFS processes for each source (and then taking the minimum of the shortest distances you obtained) , you enqueue all the sources into a queue at the beginning and run a single BFS. This creates a “wavefront” that expands outward from all sources together. This is perfect when you need to find the shortest distance from any of several starting points to other nodes.</p>
+<p>Now, let’s come to <a href="https://leetcode.com/problems/01-matrix/description/">the problem</a>. We are tasked with finding the distance of the nearest 0 for each cell. In other words, for all of the cells, we need to find the shortest distance to the 0 cells.</p>
+<p>Obviously, the distance of the nearest 0 for the 0 cells is 0. We need to find the distance of the nearest 0 cells for the 1 cells.</p>
+<p>So should we apply (single-source/standard) BFS separately for each of the 1 cells of the grid to get the shortest distance to nearest 0 cells? Well. as BFS processes each cell exactly once, running BFS once will cost O(m<em>n) time. [m</em>n is the grid dimension remember?] So in the worst case where (almost) all cells are 1, this approach will cost O((mn)^2) time. Nah, we can do better.</p>
+<blockquote>
+<p>Here is the better approach. We will apply multi-source BFS on the 0 cells, (not on the 1 cells). These 0 cells are the “targets,” and we compute how far each 1 cell is from its nearest 0. Essentially, we are measuring distance to targets (0s) by radiating from those targets.</p>
+</blockquote>
+<p>In Multi-source BFS, we start from multiple source nodes simultaneously instead of starting from a single source node, In this case, all the 0 cells act as the initial sources, and we expand outward in all directions. This works efficiently because BFS inherently explores all nodes layer by layer, guaranteeing that the first time we reach a cell, it is via the shortest possible path.</p>
+<p>Unlike the naive approach of running BFS separately for each 1 cell (which would be too slow), multi-source BFS spreads out from all 0s in parallel. Again, BFS processes each cell exactly once so this solution will run in O(m*n).</p>
+<p>Here is the code for the approach. (It beats 94% on Leetcode. However, this feature on Leetcode is broken/inconsistent for a while.)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;</span> updateMatrix(vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;&amp;</span> mat) {
+ 
+        <span style="color:#66d9ef">int</span> m <span style="color:#f92672">=</span> mat.size();
+        <span style="color:#66d9ef">int</span> n <span style="color:#f92672">=</span> mat[<span style="color:#ae81ff">0</span>].size(); 
+ 
+        vector <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> dir <span style="color:#f92672">=</span> {<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>};
+ 
+        queue <span style="color:#f92672">&lt;</span>pair<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;</span> q; <span style="color:#75715e">//the queue will contain the coordinates
+</span><span style="color:#75715e"></span> 
+ 
+        <span style="color:#75715e">// let&#39;s initialize the sources and the other cells. and enqueue all the sources
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; i<span style="color:#f92672">&lt;</span>m; i<span style="color:#f92672">++</span>)
+        {
+            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; j<span style="color:#f92672">&lt;</span>n; j<span style="color:#f92672">++</span>) <span style="color:#75715e">//STEP 1-4 of the algo
+</span><span style="color:#75715e"></span>            {
+                <span style="color:#66d9ef">if</span> (mat[i][j] <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>) 
+                {
+                    mat[i][j] <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>; <span style="color:#75715e">//essentially, we are modifying the same mat matrix to store the shortest distances (as well as the info wheather a cell is visited : -1 -&gt; unvisited , any number else -&gt; shortest distance i.e. visited)
+</span><span style="color:#75715e"></span>                }
+                 
+                <span style="color:#66d9ef">else</span> <span style="color:#a6e22e">if</span> (mat[i][j] <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) 
+                {
+                    q.push(make_pair(i, j)); <span style="color:#75715e">//the shortest distance of the 0 cells to the nearest 0 cell is 0 :)
+</span><span style="color:#75715e"></span>                }
+            }
+        }
+ 
+ 
+        <span style="color:#75715e">/*
+</span><span style="color:#75715e">        After initialization, a cell’s value is:
+</span><span style="color:#75715e">        0 (if it was originally a 0),
+</span><span style="color:#75715e">         
+</span><span style="color:#75715e">        -1 (if it hasn’t been processed yet),
+</span><span style="color:#75715e">         
+</span><span style="color:#75715e">        A positive number (if we’ve already calculated its distance).
+</span><span style="color:#75715e">        */</span>
+ 
+        <span style="color:#75715e">//running bfs
+</span><span style="color:#75715e"></span> 
+        <span style="color:#66d9ef">while</span> (q.size() <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) <span style="color:#75715e">//STEP 5 of the algo
+</span><span style="color:#75715e"></span>        {
+            <span style="color:#75715e">// retrieving and dequeueing the front
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">int</span> r <span style="color:#f92672">=</span> q.front().first; 
+            <span style="color:#66d9ef">int</span> c <span style="color:#f92672">=</span> q.front().second; 
+            q.pop(); 
+ 
+            <span style="color:#75715e">// exploring the adjacent nodes / valid directions
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; i<span style="color:#f92672">&lt;=</span><span style="color:#ae81ff">3</span>; i<span style="color:#f92672">++</span>) <span style="color:#75715e">//cool trick. it has been described below.
+</span><span style="color:#75715e"></span>            {
+                <span style="color:#66d9ef">int</span> newr <span style="color:#f92672">=</span> r<span style="color:#f92672">+</span>dir[i]; <span style="color:#75715e">//getting the new row coordinate
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">int</span> newc <span style="color:#f92672">=</span> c<span style="color:#f92672">+</span>dir[i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>]; <span style="color:#75715e">//getting the new column coordinate
+</span><span style="color:#75715e"></span> 
+                <span style="color:#66d9ef">if</span> (newr <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> newc <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> newr <span style="color:#f92672">&gt;=</span> m <span style="color:#f92672">||</span> newc <span style="color:#f92672">&gt;=</span> n) <span style="color:#75715e">//out of bound
+</span><span style="color:#75715e"></span>                {
+                    <span style="color:#66d9ef">continue</span>; <span style="color:#75715e">// skips to the next iteration
+</span><span style="color:#75715e"></span> 
+                }
+ 
+                <span style="color:#66d9ef">if</span> (mat[newr][newc] <span style="color:#f92672">!=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) <span style="color:#75715e">//means the cell isn’t marked as unvisited. we skip it because it’s either a target 0 cell or has its distance already set.
+</span><span style="color:#75715e"></span>                {
+                    <span style="color:#66d9ef">continue</span>;
+                }
+                 
+                <span style="color:#75715e">//if we are here, meaning we have got an unvisited cell. let&#39;s set up its shortest distance. 
+</span><span style="color:#75715e"></span>                mat[newr][newc] <span style="color:#f92672">=</span> mat[r][c] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>; <span style="color:#75715e">//shortest distance calculation. also this marks the cell as visited. note that, each cell is processed only once.
+</span><span style="color:#75715e"></span>                q.push(make_pair(newr, newc));  <span style="color:#75715e">//enqueuing the newly visited cell
+</span><span style="color:#75715e"></span>            }
+        }
+ 
+        <span style="color:#66d9ef">return</span> mat; 
+         
+    }
+};
+</code></pre></div><p>Noktas/Postscript Thoughts:</p>
+<ul>
+<li>
+<p>Could we have used multi-source BFS on all the 1 cells simultaneously? Not really. Because each 1 cell needs its own distance to the nearest 0</p>
+</li>
+<li>
+<p>Hey have you notice the nice trick with the vector <!-- raw HTML omitted --> dir = {0, 1, 0, -1, 0} to explore the grid up, down, left and right? The array has 5 elements, but we use pairs of consecutive elements to define direction changes for the row (newr) and column (newc). dir[i] is the change in the row coordinate. dir[i+1] is the change in the column coordinate.</p>
+</li>
+<li>
+<p>Also note, in this grid problem, we are dealing with matrix coordinates instead of standard nodes/vertices.</p>
+</li>
+<li>
+<p>In BFS, the shortest distance is calculated only once. Once the shortest distance is set, it is not modified or updated later.</p>
+</li>
+</ul>
+<h2 id="dynamic-programming-dp-approach">Dynamic Programming (DP) Approach</h2>
+<p>Initially, I came up with a recursive DP approach where I attempted to calculate the minimum distance for each cell by recursively calling its neighbors (up, down, left, and right) and then storing the result in a memoization table. The code something looked like this (gives WA):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+    <span style="color:#66d9ef">int</span> recursiveAlgo(<span style="color:#66d9ef">int</span> i, <span style="color:#66d9ef">int</span> j, vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;</span> <span style="color:#f92672">&amp;</span>mat, vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;</span> <span style="color:#f92672">&amp;</span>dp, <span style="color:#66d9ef">int</span> m, <span style="color:#66d9ef">int</span> n) {
+        <span style="color:#75715e">// If answer already exists in dp, return it.
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (dp[i][j] <span style="color:#f92672">!=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">return</span> dp[i][j];
+ 
+        <span style="color:#75715e">// Base case: if the cell is 0, its distance is 0.
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (mat[i][j] <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
+            dp[i][j] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+        }
+ 
+        <span style="color:#75715e">// Initialize distances for all four directions.
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> up <span style="color:#f92672">=</span> INT_MAX, down <span style="color:#f92672">=</span> INT_MAX, left <span style="color:#f92672">=</span> INT_MAX, right <span style="color:#f92672">=</span> INT_MAX;
+         
+        <span style="color:#66d9ef">if</span> (i <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>)
+            up <span style="color:#f92672">=</span> recursiveAlgo(i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, j, mat, dp, m, n);
+        <span style="color:#66d9ef">if</span> (i <span style="color:#f92672">!=</span> m <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)
+            down <span style="color:#f92672">=</span> recursiveAlgo(i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, j, mat, dp, m, n);
+        <span style="color:#66d9ef">if</span> (j <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>)
+            left <span style="color:#f92672">=</span> recursiveAlgo(i, j <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, mat, dp, m, n);
+        <span style="color:#66d9ef">if</span> (j <span style="color:#f92672">!=</span> n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)
+            right <span style="color:#f92672">=</span> recursiveAlgo(i, j <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, mat, dp, m, n);
+ 
+        <span style="color:#75715e">// Set dp for current cell.
+</span><span style="color:#75715e"></span>        dp[i][j] <span style="color:#f92672">=</span> min({up, down, left, right}) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+        <span style="color:#66d9ef">return</span> dp[i][j];
+    }
+ 
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;</span> updateMatrix(vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;&amp;</span> mat) {
+        <span style="color:#66d9ef">int</span> m <span style="color:#f92672">=</span> mat.size(), n <span style="color:#f92672">=</span> mat[<span style="color:#ae81ff">0</span>].size();
+        vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;</span> dp(m, vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>(n, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>));
+ 
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> m; i<span style="color:#f92672">++</span>) {
+            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> n; j<span style="color:#f92672">++</span>) {
+                dp[i][j] <span style="color:#f92672">=</span> recursiveAlgo(i, j, mat, dp, m, n);
+            }
+        }
+        <span style="color:#66d9ef">return</span> dp;
+    }
+};
+</code></pre></div><p>The main issue in the approach above is that <strong>the recursive approach creates cyclic dependencies.</strong> When we are computing the distance for a cell, we are making recursive calls to all its neighbors, right?. But if two cells depend on each other, for example, cell A calls cell B, which in turn calls cell A (or another cell that eventually calls A) before A’s value is finalized, you’ll end up in an infinite loop or incorrect results because the dp value for A is still set to –1 when B checks it.</p>
+<p>In recursive DP, if we do not <strong>ensure that all dependent subproblems are solved before the current cell’s computation,</strong> the recursion can “chase its tail” or run infinitely and never reach a stable solution.</p>
+<p>To overcome these issues, we developed a two-pass DP solution that processes the matrix in a specific order that guarantees that every cell’s value depends only on already computed values. In the first pass from the top-left corner to the bottom-right corner, only the top and left neighbors are taken into consideration and computed. In the second pass, we compute in the reverse order, from the bottom-right corner to the top-left corner, only considering the bottom and the right neighbors and updating the dp table accordingly which stores the shortest distance to the nearest 0 for that cell. This ensures that <strong>when updating a cell, we are only relying on cells whose values are already finalized and also we are covering all the possible directions.</strong></p>
+<p>Here is the AC code.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;</span> updateMatrix(vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;&amp;</span> mat) {
+ 
+        <span style="color:#66d9ef">int</span> m <span style="color:#f92672">=</span> mat.size();
+        <span style="color:#66d9ef">int</span> n <span style="color:#f92672">=</span> mat[<span style="color:#ae81ff">0</span>].size(); 
+         
+        vector <span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;</span> dp (m, vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> (n, INT_MAX <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)); <span style="color:#75715e">//initializing distance at INT_MAX will result in overflow while computing (dp[i][j] + 1)
+</span><span style="color:#75715e"></span>         
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; i<span style="color:#f92672">&lt;</span>m; i<span style="color:#f92672">++</span>) <span style="color:#75715e">//first pass: from top-left to bottom-right corner only considering the left and the top neighbors
+</span><span style="color:#75715e"></span>        {
+            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; j<span style="color:#f92672">&lt;</span>n; j<span style="color:#f92672">++</span>)
+            {
+                <span style="color:#66d9ef">if</span> (mat[i][j] <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) <span style="color:#75715e">// if a 0-cell, shortest distance will be 0
+</span><span style="color:#75715e"></span>                {
+                    dp[i][j] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+                    <span style="color:#66d9ef">continue</span>; 
+                }
+ 
+                <span style="color:#66d9ef">if</span> (i<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span>) <span style="color:#75715e">// checking top neighbor
+</span><span style="color:#75715e"></span>                {
+                    dp [i][j] <span style="color:#f92672">=</span> min (dp[i][j], dp[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][j] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) ; 
+                }   
+                 
+                <span style="color:#66d9ef">if</span> (j<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span>) <span style="color:#75715e">//checking left neighbor 
+</span><span style="color:#75715e"></span>                {
+                    dp[i][j] <span style="color:#f92672">=</span> min(dp[i][j], dp[i][j<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) ; 
+                }
+            }
+        }
+ 
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span>m<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>; i<span style="color:#f92672">&gt;=</span><span style="color:#ae81ff">0</span>; i<span style="color:#f92672">--</span>) <span style="color:#75715e">//second pass: from bottom-right to top-left corner only considering the neighbors at bottom and the right
+</span><span style="color:#75715e"></span>        {
+            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j<span style="color:#f92672">=</span>n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>; j<span style="color:#f92672">&gt;=</span><span style="color:#ae81ff">0</span>; j<span style="color:#f92672">--</span>)
+            {
+                <span style="color:#66d9ef">if</span> (i<span style="color:#f92672">&lt;</span>m<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)  <span style="color:#75715e">//checking bottom neighbor 
+</span><span style="color:#75715e"></span>                {
+                    dp [i][j] <span style="color:#f92672">=</span> min (dp[i][j], dp[i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>][j] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) ;
+                }   
+                 
+                <span style="color:#66d9ef">if</span> (j<span style="color:#f92672">&lt;</span>n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) <span style="color:#75715e">//checking right neighbor 
+</span><span style="color:#75715e"></span>                {
+                    dp[i][j] <span style="color:#f92672">=</span> min(dp[i][j], dp[i][j<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) ; 
+                }
+            }
+        }
+ 
+        <span style="color:#66d9ef">return</span> dp; 
+ 
+    }
+};
+</code></pre></div>
+
+
+        <div class="footer">
+    Powered by <a href="https://gohugo.io/">Hugo</a> with
+    <a href="https://github.com/mrmierzejewski/hugo-theme-console/">Console Theme</a>. 
+</div>
+
+    </div>
+  </body>
+</html>

@@ -4,14 +4,63 @@
     
         
         <url>
+            <loc>https://heytamjid.github.io/posts/01-matrix/</loc>
+            <lastmod>2025-03-08T00:00:00+00:00</lastmod>
+        </url>
+        
+    
+        
+        <url>
+            <loc>https://heytamjid.github.io/categories/</loc>
+            <lastmod>2025-03-08T00:00:00+00:00</lastmod>
+        </url>
+        
+    
+        
+        <url>
+            <loc>https://heytamjid.github.io/tags/leetcode/</loc>
+            <lastmod>2025-03-08T00:00:00+00:00</lastmod>
+        </url>
+        
+    
+        
+        <url>
             <loc>https://heytamjid.github.io/posts/</loc>
-            <lastmod>2025-03-04T00:00:00+00:00</lastmod>
+            <lastmod>2025-03-08T00:00:00+00:00</lastmod>
+        </url>
+        
+    
+        
+        <url>
+            <loc>https://heytamjid.github.io/categories/problem-solving/</loc>
+            <lastmod>2025-03-08T00:00:00+00:00</lastmod>
+        </url>
+        
+    
+        
+        <url>
+            <loc>https://heytamjid.github.io/tags/</loc>
+            <lastmod>2025-03-08T00:00:00+00:00</lastmod>
         </url>
         
     
         
         <url>
             <loc>https://heytamjid.github.io/</loc>
+            <lastmod>2025-03-08T00:00:00+00:00</lastmod>
+        </url>
+        
+    
+        
+        <url>
+            <loc>https://heytamjid.github.io/categories/my-write-ups/</loc>
+            <lastmod>2025-03-04T00:00:00+00:00</lastmod>
+        </url>
+        
+    
+        
+        <url>
+            <loc>https://heytamjid.github.io/tags/stories/</loc>
             <lastmod>2025-03-04T00:00:00+00:00</lastmod>
         </url>
         
@@ -25,8 +74,85 @@
     
         
         <url>
-            <loc>https://heytamjid.github.io/posts/dungeon-game-on-leetcode/</loc>
+            <loc>https://heytamjid.github.io/pasta/now-summer-is-gone/</loc>
+            <lastmod>2025-02-25T00:00:00+00:00</lastmod>
+        </url>
+        
+    
+        
+        <url>
+            <loc>https://heytamjid.github.io/pasta/</loc>
+            <lastmod>2025-02-25T00:00:00+00:00</lastmod>
+        </url>
+        
+    
+        
+        <url>
+            <loc>https://heytamjid.github.io/categories/pasta/</loc>
+            <lastmod>2025-02-25T00:00:00+00:00</lastmod>
+        </url>
+        
+    
+        
+        <url>
+            <loc>https://heytamjid.github.io/tags/poems/</loc>
+            <lastmod>2025-02-25T00:00:00+00:00</lastmod>
+        </url>
+        
+    
+        
+        <url>
+            <loc>https://heytamjid.github.io/tags/rant/</loc>
+            <lastmod>2024-04-17T00:00:00+00:00</lastmod>
+        </url>
+        
+    
+        
+        <url>
+            <loc>https://heytamjid.github.io/categories/recent-life-updates/</loc>
+            <lastmod>2024-04-17T00:00:00+00:00</lastmod>
+        </url>
+        
+    
+        
+        <url>
+            <loc>https://heytamjid.github.io/posts/tech-to-be-obsoleted/</loc>
+            <lastmod>2024-04-17T00:00:00+00:00</lastmod>
+        </url>
+        
+    
+        
+        <url>
+            <loc>https://heytamjid.github.io/tags/technology/</loc>
+            <lastmod>2024-04-17T00:00:00+00:00</lastmod>
+        </url>
+        
+    
+        
+        <url>
+            <loc>https://heytamjid.github.io/posts/dungeon-game/</loc>
             <lastmod>2024-03-21T00:00:00+00:00</lastmod>
+        </url>
+        
+    
+        
+        <url>
+            <loc>https://heytamjid.github.io/pasta/being-quite/</loc>
+            <lastmod>2024-02-27T00:00:00+00:00</lastmod>
+        </url>
+        
+    
+        
+        <url>
+            <loc>https://heytamjid.github.io/tags/quotes/</loc>
+            <lastmod>2024-02-27T00:00:00+00:00</lastmod>
+        </url>
+        
+    
+        
+        <url>
+            <loc>https://heytamjid.github.io/pasta/the-man-and-the-river/</loc>
+            <lastmod>2023-12-15T00:00:00+00:00</lastmod>
         </url>
         
     
@@ -88,13 +214,44 @@
     
         
         <url>
-            <loc>https://heytamjid.github.io/categories/</loc>
+            <loc>https://heytamjid.github.io/projects/</loc>
+            <priority>0</priority>
         </url>
         
     
         
         <url>
-            <loc>https://heytamjid.github.io/tags/</loc>
+            <loc>https://heytamjid.github.io/reminders/everything-we-are-looking-for/</loc>
+        </url>
+        
+    
+        
+        <url>
+            <loc>https://heytamjid.github.io/reminders/gazing-like-animals/</loc>
+        </url>
+        
+    
+        
+        <url>
+            <loc>https://heytamjid.github.io/reminders/take-advantage-of-your-youth/</loc>
+        </url>
+        
+    
+        
+        <url>
+            <loc>https://heytamjid.github.io/reminders/we-will-live-wherever-we-will/</loc>
+        </url>
+        
+    
+        
+        <url>
+            <loc>https://heytamjid.github.io/reminders/youth-shade/</loc>
+        </url>
+        
+    
+        
+        <url>
+            <loc>https://heytamjid.github.io/reminders/</loc>
         </url>
         
     

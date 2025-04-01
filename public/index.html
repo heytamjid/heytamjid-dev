@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-	<meta name="generator" content="Hugo 0.145.0">
+	<meta name="generator" content="Hugo 0.92.2" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>tamjid.me/</title>
@@ -36,17 +36,25 @@
             <div class="logo terminal-prompt">
               
               
-              <a href="https://heytamjid.github.io/" class="no-style ">tamjid.me</a>:~# 
+              <a href="https://heytamjid.github.io" class="no-style ">tamjid.me</a>:~# 
               </div></header>
           <nav class="terminal-menu">
             <ul vocab="https://schema.org/" typeof="BreadcrumbList">
+                
+                <li><a href="https://heytamjid.github.io/projects/" typeof="ListItem">projects/</a></li>
+                
+                <li><a href="https://heytamjid.github.io/posts/" typeof="ListItem">posts/</a></li>
+                
+                <li><a href="https://heytamjid.github.io/pasta/" typeof="ListItem">pasta/</a></li>
+                
+                <li><a href="https://heytamjid.github.io/reminders/" typeof="ListItem">ذكر/</a></li>
                 
             </ul>
           </nav>
         </div>
     </div>
 
-    <div class="container " >
+    <div class="container animated zoomIn fast" >
         
 
 <h1>About</h1>
@@ -55,15 +63,22 @@
     অভিবাদন! Greetings! السلام عليكم! 
 </p>
 <p>
-    I am Tamjid Hasan Fahim. Computer Science & Engineering <strike>freshman</strike> <strike>sophomore</strike> junior-year student at <a href="https://www.ruet.ac.bd" target="_blank">RUET</a>. Wannabe a real computer scientist. <strike>Aspiring polymath.</strike>
+    I am Tamjid Hasan Fahim. Computer Science & Engineering <strike>freshman</strike> <strike>sophomore</strike> junior-year student at <a href="https://www.ruet.ac.bd" target="_blank">RUET</a>. Wannabe a <i>real</i> computer scientist.
 </p>
 <p>
-    Currently grinding in DSA & <i>somewhat</i> Competitive Programming. Exploring the research areas. ML/DL/CV Enthusiast. Building <a href="https://dormitory.live" target="_blank">Dormitory</a> one piece at a time. Lots of interests, and too little time.
+    Currently grinding in DSA & <i>somewhat</i> Competitive Programming. Exploring the research areas. ML/DL/CV Enthusiast. Building <i><a href="https://dormitory.live" target="_blank">Dormitory</a></i> one piece at a time. Lots of interests, and too little time.
 </p>
 <p>
     INTP. Interested in architecture, aviation, cognitive science & technology.  Astonished by how far abstraction has taken us. Fascinated by low-level workings. Amazed by nature and human-beings.  
 </p>
 <br/>
+
+<h1>Profile Links</h1>
+<a href="https://x.com/heyTamjid/" target="_blank">Twitter</a>
+<a href="https://www.linkedin.com/in/tamjid-hasan-fahim/" target="_blank">LinkedIn</a>
+<a href="https://github.com/heytamjid" target="_blank">Github</a>
+<a href="https://discord.com/users/heytamjid" target="_blank">Discord</a>
+<a href="https://facebook.com/tamjid11" target="_blank">Facebook</a>
 
 <h1>Latest posts</h1>
 
@@ -72,18 +87,34 @@
     
         <div class="post">
             <p>
+                <div class="date">Mar. 8, 2025</div>
+                <h1><a href="https://heytamjid.github.io/posts/01-matrix/" title="01 Matrix on LeetCode: Multi-Source BFS and Two-pass DP Solution">01 Matrix on LeetCode: Multi-Source BFS and Two-pass DP Solution</a></h1>
+                In Multi-source BFS, we start from multiple source nodes simultaneously instead of starting from a single source node, In this case, all the 0 cells act as the initial sources, and we expand outward in all directions. This works efficiently because BFS inherently explores all nodes layer by layer, guaranteeing that the first time we reach a cell, it is via the shortest possible path. Unlike the naive approach of running BFS separately for each 1 cell (which would be too slow), multi-source BFS spreads out from all 0s in parallel. Again, BFS processes each cell exactly once so this solution will run in O(m*n). As of the DP solution, <strong>the recursive approach must NOT create cyclic dependencies.</strong> When we are computing the distance for a cell, we are making recursive calls to all its neighbors, right?. But if two cells depend on each other, for example, cell A calls cell B, which in turn calls cell A (or another cell that eventually calls A) before A’s value is finalized, you’ll end up in an infinite loop or incorrect results because the dp value for A is still set to –1 when B checks it. In recursive DP, if we do not <strong>ensure that all dependent subproblems are solved before the current cell’s computation,</strong> the recursion can “chase its tail” or run infinitely and never reach a stable solution. <a href="https://heytamjid.github.io/posts/01-matrix/"> Read More </a>
+            </p>
+        </div>    
+    
+        <div class="post">
+            <p>
                 <div class="date">Mar. 4, 2025</div>
                 <h1><a href="https://heytamjid.github.io/posts/the-bleeding-hours/" title="The Bleeding Hours">The Bleeding Hours</a></h1>
-                <p>For days now, a strange sensation has taken root in me. It is as if I have been shot somehow, and blood is gushing through the gaps of my fingers in an unrelenting endless flow, without pause, without mercy, without any haste or hesitation, but with a measured, inevitable grace. And I can&rsquo;t stop it in no means. It does not pool or clot, it simply leaves, abandoning the very me, slipping from each corridors of my body.</p> <a href="https://heytamjid.github.io/posts/the-bleeding-hours/"> Read More </a>
+                For days now, a strange sensation has taken root in me. It is as if I have been shot somehow, and blood is gushing through the gaps of my fingers in an unrelenting endless flow, without pause, without mercy, without any haste or hesitation, but with a measured, inevitable grace. And I can&rsquo;t stop it in no means. It does not pool or clot, it simply leaves, abandoning the very me, slipping from each corridors of my body. <a href="https://heytamjid.github.io/posts/the-bleeding-hours/"> Read More </a>
+            </p>
+        </div>    
+    
+        <div class="post">
+            <p>
+                <div class="date">Apr. 17, 2024</div>
+                <h1><a href="https://heytamjid.github.io/posts/tech-to-be-obsoleted/" title="Tech To Be Obsoleted">Tech To Be Obsoleted</a></h1>
+                My suggestion for novice PC users who are thinking of building a PC for causal usage is to avoid online PC builder hobbyists. Most PC builders community online are often some too-enthusiastic people out there who are more into keeping the latest-fastest-unnecessarily_overclocked PC in one corner of their room. It’s their HOBBY (not necessity) to squeeze every hz of their processor &amp; other components often completely unnecessarily only to waste their time gaming and commenting on their communities :v So get whatever is decent for your workload and don’t chase for the someday-i-might-need-this-feature or the never-obsolete-PC. No tech is future-proof. It will start becoming obsolete or at least old in terms of technology even before you realize it, but most probably it will keep working and you will not upgrade it until it REALLY sucks – it is when it can’t do what you NEED to do. Most potato users build a PC maybe once a decade unlike these hobbyists so know that you are not on the same ground as the people you are taking advice from. <a href="https://heytamjid.github.io/posts/tech-to-be-obsoleted/"> Read More </a>
             </p>
         </div>    
     
         <div class="post">
             <p>
                 <div class="date">Mar. 21, 2024</div>
-                <h1><a href="https://heytamjid.github.io/posts/dungeon-game-on-leetcode/" title="Dungeon Game on LeetCode : Finding The Right Question To Ask">Dungeon Game on LeetCode : Finding The Right Question To Ask</a></h1>
+                <h1><a href="https://heytamjid.github.io/posts/dungeon-game/" title="Dungeon Game on LeetCode : Finding The Right Question To Ask in DP Problems">Dungeon Game on LeetCode : Finding The Right Question To Ask in DP Problems</a></h1>
                 <p>I have been solving DP problems for last 2 days and guess what, they are really cooool and fun to solve. Previously I didn’t enjoy this much while solving topic-wise problems on Prefix Sum or Sliding Window. <a href="https://leetcode.com/problems/dungeon-game/description/">Dungeon Game</a> is my first solved bottom-up DP problem. It’s marked as hard, but I believe it is sort of quite medium level problem.</p>
-<p>In DP problems, the main part is to find out what to remember <a href="https://youtu.be/YBSt1jYwVfU?si=VWSg2Xta6vAQrQXk&amp;t=1090">as Errichto said</a>. And for that, you have to know the right question to ask.</p> <a href="https://heytamjid.github.io/posts/dungeon-game-on-leetcode/"> Read More </a>
+<p>In DP problems, the main part is to find out <strong>what to remember</strong> <a href="https://youtu.be/YBSt1jYwVfU?si=VWSg2Xta6vAQrQXk&amp;t=1090">as Errichto said</a>. And for that, you have to know <strong>the right question to ask</strong>.</p> <a href="https://heytamjid.github.io/posts/dungeon-game/"> Read More </a>
             </p>
         </div>    
     
