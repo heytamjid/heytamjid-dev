@@ -21,7 +21,7 @@ publishDir = "docs"
   url = "projects/"
 
   [[params.navlinks]]
-  name = "posts/"
+  name = "my_posts/"
   url = "posts/"
 
   [[params.navlinks]]
