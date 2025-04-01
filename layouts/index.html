@@ -6,21 +6,28 @@
     অভিবাদন! Greetings! السلام عليكم! 
 </p>
 <p>
-    I am Tamjid Hasan Fahim. Computer Science & Engineering <strike>freshman</strike> <strike>sophomore</strike> junior-year student at <a href="https://www.ruet.ac.bd" target="_blank">RUET</a>. Wannabe a real computer scientist. <strike>Aspiring polymath.</strike>
+    I am Tamjid Hasan Fahim. Computer Science & Engineering <strike>freshman</strike> <strike>sophomore</strike> junior-year student at <a href="https://www.ruet.ac.bd" target="_blank">RUET</a>. Wannabe a <i>real</i> computer scientist.
 </p>
 <p>
-    Currently grinding in DSA & <i>somewhat</i> Competitive Programming. Exploring the research areas. ML/DL/CV Enthusiast. Building <a href="https://dormitory.live" target="_blank">Dormitory</a> one piece at a time. Lots of interests, and too little time.
+    Currently grinding in DSA & <i>somewhat</i> Competitive Programming. Exploring the research areas. ML/DL/CV Enthusiast. Building <i><a href="https://dormitory.live" target="_blank">Dormitory</a></i> one piece at a time. Lots of interests, and too little time.
 </p>
 <p>
     INTP. Interested in architecture, aviation, cognitive science & technology.  Astonished by how far abstraction has taken us. Fascinated by low-level workings. Amazed by nature and human-beings.  
 </p>
 <br/>
 
+<h1>Profile Links</h1>
+<a href="https://x.com/heyTamjid/" target="_blank">Twitter</a>
+<a href="https://www.linkedin.com/in/tamjid-hasan-fahim/" target="_blank">LinkedIn</a>
+<a href="https://github.com/heytamjid" target="_blank">Github</a>
+<a href="https://discord.com/users/heytamjid" target="_blank">Discord</a>
+<a href="https://facebook.com/tamjid11" target="_blank">Facebook</a>
+
 <h1>Latest posts</h1>
 
 <div class="posts-list">
 {{ with .Site.GetPage "/posts" }}
-    {{ range first 3 (sort .Data.Pages "Date" "desc" (where .Pages ".Params.private" "!=" true))}}
+    {{ range first 10 (sort .Data.Pages "Date" "desc" (where .Pages ".Params.private" "!=" true))}}
         <div class="post">
             <p>
                 <div class="date">{{ .PublishDate.Format "Jan. 2, 2006" }}</div>

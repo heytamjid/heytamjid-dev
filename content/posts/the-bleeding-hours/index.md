@@ -1,6 +1,8 @@
 +++
 title = "The Bleeding Hours"
 date = "2025-03-04"
+categories = ["my-write-ups"]
+tags = ["story"]
 +++
 
 For days now, a strange sensation has taken root in me. It is as if I have been shot somehow, and blood is gushing through the gaps of my fingers in an unrelenting endless flow, without pause, without mercy, without any haste or hesitation, but with a measured, inevitable grace. And I can't stop it in no means. It does not pool or clot, it simply leaves, abandoning the very me, slipping from each corridors of my body.
@@ -18,3 +20,5 @@ I close my eyes.
 The world does not hold its breath for me. It does not care to ask if I am ready.
 
 The blood flows. Clock ticks in. And somewhere, in the quiet between moments, a last drop falls. And with it, I go.
+
+(drafted by me on March 04, 2025)

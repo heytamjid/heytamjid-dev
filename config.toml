@@ -1,24 +1,32 @@
 baseurl = "https://heytamjid.github.io"
-title = "console-demo"
+title = "tamjid.me"
 theme = "hugo-theme-console"
 languageCode = "en-us"
 
+
 [params]
   # Cutting off the page title to two chars for mobile (console-demo -> co)
-  titleCutting = true
+  titleCutting = false
+  summaryLength = 256
 
   # Set the animation style -- https://animate.style/
   # To disable animations, please remove or comment animationStyle parameter
   animateStyle = "animated zoomIn fast" 
 
   [[params.navlinks]]
-  name = "about/"
-  url = "about/"
+  name = "projects/"
+  url = "projects/"
 
   [[params.navlinks]]
   name = "posts/"
   url = "posts/"
+
+  [[params.navlinks]]
+  name = "pasta/"
+  url = "pasta/"
   
   [[params.navlinks]]
   name = "photos/"
   url = "photos/"
+
+  

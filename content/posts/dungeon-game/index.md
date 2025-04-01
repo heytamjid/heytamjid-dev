@@ -1,12 +1,16 @@
 +++
-title = "Dungeon Game on LeetCode : Finding The Right Question To Ask"
+title = "Dungeon Game on LeetCode : Finding The Right Question To Ask in DP Problems"
 date = "2024-03-21"
+categories = ["problem-solving"]
+tags = ["leetcode"]
 +++
 
 I have been solving DP problems for last 2 days and guess what, they are really cooool and fun to solve. Previously I didn’t enjoy this much while solving topic-wise problems on Prefix Sum or Sliding Window. [Dungeon Game](https://leetcode.com/problems/dungeon-game/description/) is my first solved bottom-up DP problem. It’s marked as hard, but I believe it is sort of quite medium level problem.
 
-In DP problems, the main part is to find out what to remember [as Errichto said](https://youtu.be/YBSt1jYwVfU?si=VWSg2Xta6vAQrQXk&t=1090). And for that, you have to know the right question to ask.
+In DP problems, the main part is to find out **what to remember** [as Errichto said](https://youtu.be/YBSt1jYwVfU?si=VWSg2Xta6vAQrQXk&t=1090). And for that, you have to know **the right question to ask**.
+
 <!--more-->
+
 In this particular problem, first observe that, At princess’s position (bottom-right cell), we need at least / minimum 1 health.
 
 So the question we need to ask at each cell [i][j], what is the minimum health required while entering this cell (aka minimum initial health) so that my final health at the bottom-right cell becomes exactly 1. (Not greater than 1 as we need to find out MINIMUM initial health, not less than 1 as then the knight will die)
