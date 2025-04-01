@@ -3,4 +3,4 @@ title = "ذكر"
 type = "gallery"
 +++
 
-Islamic reminder content from various sources that I find beneficial. 
+Islamic reminder contents from various sources that I find beneficial. 
