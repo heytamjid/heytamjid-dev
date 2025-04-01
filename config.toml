@@ -18,18 +18,18 @@ publishDir = "docs"
 
   [[params.navlinks]]
   name = "projects/"
-  url = "projects/"
+  url = "/projects/"
 
   [[params.navlinks]]
   name = "posts/"
-  url = "posts/"
+  url = "/posts/"
 
   [[params.navlinks]]
   name = "pasta/"
-  url = "pasta/"
+  url = "/pasta/"
   
   [[params.navlinks]]
   name = "ذكر/"
-  url = "reminders/"
+  url = "/reminders/"
 
   
