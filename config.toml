@@ -3,6 +3,9 @@ title = "tamjid.me"
 theme = "hugo-theme-console"
 languageCode = "en-us"
 
+publishDir = "docs"
+
+
 
 [params]
   # Cutting off the page title to two chars for mobile (console-demo -> co)
