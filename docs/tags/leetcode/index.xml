@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>leetcode on tamjid.me</title>
-    <link>https://heytamjid.github.io/tags/leetcode/</link>
+    <link>https://tamjid.me/tags/leetcode/</link>
     <description>Recent content in leetcode on tamjid.me</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 08 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://heytamjid.github.io/tags/leetcode/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 08 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://tamjid.me/tags/leetcode/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>01 Matrix on LeetCode: Multi-Source BFS and Two-pass DP Solution</title>
-      <link>https://heytamjid.github.io/posts/01-matrix/</link>
+      <link>https://tamjid.me/posts/01-matrix/</link>
       <pubDate>Sat, 08 Mar 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://heytamjid.github.io/posts/01-matrix/</guid>
+      <guid>https://tamjid.me/posts/01-matrix/</guid>
       <description>In Multi-source BFS, we start from multiple source nodes simultaneously instead of starting from a single source node, In this case, all the 0 cells act as the initial sources, and we expand outward in all directions. This works efficiently because BFS inherently explores all nodes layer by layer, guaranteeing that the first time we reach a cell, it is via the shortest possible path. Unlike the naive approach of running BFS separately for each 1 cell (which would be too slow), multi-source BFS spreads out from all 0s in parallel. Again, BFS processes each cell exactly once so this solution will run in O(m*n). As of the DP solution, &lt;strong&gt;the recursive approach must NOT create cyclic dependencies.&lt;/strong&gt; When we are computing the distance for a cell, we are making recursive calls to all its neighbors, right?. But if two cells depend on each other, for example, cell A calls cell B, which in turn calls cell A (or another cell that eventually calls A) before A’s value is finalized, you’ll end up in an infinite loop or incorrect results because the dp value for A is still set to –1 when B checks it. In recursive DP, if we do not &lt;strong&gt;ensure that all dependent subproblems are solved before the current cell’s computation,&lt;/strong&gt; the recursion can “chase its tail” or run infinitely and never reach a stable solution.</description>
     </item>
     
     <item>
       <title>Dungeon Game on LeetCode : Finding The Right Question To Ask in DP Problems</title>
-      <link>https://heytamjid.github.io/posts/dungeon-game/</link>
+      <link>https://tamjid.me/posts/dungeon-game/</link>
       <pubDate>Thu, 21 Mar 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://heytamjid.github.io/posts/dungeon-game/</guid>
+      <guid>https://tamjid.me/posts/dungeon-game/</guid>
       <description>&lt;p&gt;I have been solving DP problems for last 2 days and guess what, they are really cooool and fun to solve. Previously I didn’t enjoy this much while solving topic-wise problems on Prefix Sum or Sliding Window. &lt;a href=&#34;https://leetcode.com/problems/dungeon-game/description/&#34;&gt;Dungeon Game&lt;/a&gt; is my first solved bottom-up DP problem. It’s marked as hard, but I believe it is sort of quite medium level problem.&lt;/p&gt;
 &lt;p&gt;In DP problems, the main part is to find out &lt;strong&gt;what to remember&lt;/strong&gt; &lt;a href=&#34;https://youtu.be/YBSt1jYwVfU?si=VWSg2Xta6vAQrQXk&amp;amp;t=1090&#34;&gt;as Errichto said&lt;/a&gt;. And for that, you have to know &lt;strong&gt;the right question to ask&lt;/strong&gt;.&lt;/p&gt;</description>
     </item>

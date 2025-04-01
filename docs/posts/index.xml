@@ -2,44 +2,44 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on tamjid.me</title>
-    <link>https://heytamjid.github.io/posts/</link>
+    <link>https://tamjid.me/posts/</link>
     <description>Recent content in Posts on tamjid.me</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 08 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://heytamjid.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 08 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://tamjid.me/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>01 Matrix on LeetCode: Multi-Source BFS and Two-pass DP Solution</title>
-      <link>https://heytamjid.github.io/posts/01-matrix/</link>
+      <link>https://tamjid.me/posts/01-matrix/</link>
       <pubDate>Sat, 08 Mar 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://heytamjid.github.io/posts/01-matrix/</guid>
+      <guid>https://tamjid.me/posts/01-matrix/</guid>
       <description>In Multi-source BFS, we start from multiple source nodes simultaneously instead of starting from a single source node, In this case, all the 0 cells act as the initial sources, and we expand outward in all directions. This works efficiently because BFS inherently explores all nodes layer by layer, guaranteeing that the first time we reach a cell, it is via the shortest possible path. Unlike the naive approach of running BFS separately for each 1 cell (which would be too slow), multi-source BFS spreads out from all 0s in parallel. Again, BFS processes each cell exactly once so this solution will run in O(m*n). As of the DP solution, &lt;strong&gt;the recursive approach must NOT create cyclic dependencies.&lt;/strong&gt; When we are computing the distance for a cell, we are making recursive calls to all its neighbors, right?. But if two cells depend on each other, for example, cell A calls cell B, which in turn calls cell A (or another cell that eventually calls A) before A’s value is finalized, you’ll end up in an infinite loop or incorrect results because the dp value for A is still set to –1 when B checks it. In recursive DP, if we do not &lt;strong&gt;ensure that all dependent subproblems are solved before the current cell’s computation,&lt;/strong&gt; the recursion can “chase its tail” or run infinitely and never reach a stable solution.</description>
     </item>
     
     <item>
       <title>The Bleeding Hours</title>
-      <link>https://heytamjid.github.io/posts/the-bleeding-hours/</link>
+      <link>https://tamjid.me/posts/the-bleeding-hours/</link>
       <pubDate>Tue, 04 Mar 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://heytamjid.github.io/posts/the-bleeding-hours/</guid>
+      <guid>https://tamjid.me/posts/the-bleeding-hours/</guid>
       <description>For days now, a strange sensation has taken root in me. It is as if I have been shot somehow, and blood is gushing through the gaps of my fingers in an unrelenting endless flow, without pause, without mercy, without any haste or hesitation, but with a measured, inevitable grace. And I can&amp;rsquo;t stop it in no means. It does not pool or clot, it simply leaves, abandoning the very me, slipping from each corridors of my body.</description>
     </item>
     
     <item>
       <title>Tech To Be Obsoleted</title>
-      <link>https://heytamjid.github.io/posts/tech-to-be-obsoleted/</link>
+      <link>https://tamjid.me/posts/tech-to-be-obsoleted/</link>
       <pubDate>Wed, 17 Apr 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://heytamjid.github.io/posts/tech-to-be-obsoleted/</guid>
+      <guid>https://tamjid.me/posts/tech-to-be-obsoleted/</guid>
       <description>My suggestion for novice PC users who are thinking of building a PC for causal usage is to avoid online PC builder hobbyists. Most PC builders community online are often some too-enthusiastic people out there who are more into keeping the latest-fastest-unnecessarily_overclocked PC in one corner of their room. It’s their HOBBY (not necessity) to squeeze every hz of their processor &amp;amp; other components often completely unnecessarily only to waste their time gaming and commenting on their communities :v So get whatever is decent for your workload and don’t chase for the someday-i-might-need-this-feature or the never-obsolete-PC. No tech is future-proof. It will start becoming obsolete or at least old in terms of technology even before you realize it, but most probably it will keep working and you will not upgrade it until it REALLY sucks – it is when it can’t do what you NEED to do. Most potato users build a PC maybe once a decade unlike these hobbyists so know that you are not on the same ground as the people you are taking advice from.</description>
     </item>
     
     <item>
       <title>Dungeon Game on LeetCode : Finding The Right Question To Ask in DP Problems</title>
-      <link>https://heytamjid.github.io/posts/dungeon-game/</link>
+      <link>https://tamjid.me/posts/dungeon-game/</link>
       <pubDate>Thu, 21 Mar 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://heytamjid.github.io/posts/dungeon-game/</guid>
+      <guid>https://tamjid.me/posts/dungeon-game/</guid>
       <description>&lt;p&gt;I have been solving DP problems for last 2 days and guess what, they are really cooool and fun to solve. Previously I didn’t enjoy this much while solving topic-wise problems on Prefix Sum or Sliding Window. &lt;a href=&#34;https://leetcode.com/problems/dungeon-game/description/&#34;&gt;Dungeon Game&lt;/a&gt; is my first solved bottom-up DP problem. It’s marked as hard, but I believe it is sort of quite medium level problem.&lt;/p&gt;
 &lt;p&gt;In DP problems, the main part is to find out &lt;strong&gt;what to remember&lt;/strong&gt; &lt;a href=&#34;https://youtu.be/YBSt1jYwVfU?si=VWSg2Xta6vAQrQXk&amp;amp;t=1090&#34;&gt;as Errichto said&lt;/a&gt;. And for that, you have to know &lt;strong&gt;the right question to ask&lt;/strong&gt;.&lt;/p&gt;</description>
     </item>

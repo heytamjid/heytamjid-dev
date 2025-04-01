@@ -8,20 +8,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <meta name="googlebot" content="index,follow,snippet,archive">
-    <link rel="stylesheet" href="https://heytamjid.github.io/hugo-theme-console/css/terminal-0.7.4.min.css">
-    <link rel="stylesheet" href="https://heytamjid.github.io/hugo-theme-console/css/animate-4.1.1.min.css">
-    <link rel="stylesheet" href="https://heytamjid.github.io/hugo-theme-console/css/console.css">
+    <link rel="stylesheet" href="https://tamjid.me/hugo-theme-console/css/terminal-0.7.4.min.css">
+    <link rel="stylesheet" href="https://tamjid.me/hugo-theme-console/css/animate-4.1.1.min.css">
+    <link rel="stylesheet" href="https://tamjid.me/hugo-theme-console/css/console.css">
     
       <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
        
-      <link href="https://heytamjid.github.io/categories/problem-solving/index.xml" rel="alternate" type="application/rss+xml" title="tamjid.me" />
+      <link href="https://tamjid.me/categories/problem-solving/index.xml" rel="alternate" type="application/rss+xml" title="tamjid.me" />
     <meta property="og:title" content="problem-solving" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://heytamjid.github.io/categories/problem-solving/" />
+<meta property="og:url" content="https://tamjid.me/categories/problem-solving/" />
 
 
 <meta name="twitter:title" content="problem-solving"/>
@@ -35,18 +35,18 @@
             <div class="logo terminal-prompt">
               
               
-              <a href="https://heytamjid.github.io" class="no-style ">tamjid.me</a>:~# 
-              <a href='https://heytamjid.github.iocategories'>categories</a>/<a href='https://heytamjid.github.iocategories/problem-solving'>problem-solving</a>/</div></header>
+              <a href="https://tamjid.me" class="no-style ">tamjid.me</a>:~# 
+              <a href='https://tamjid.mecategories'>categories</a>/<a href='https://tamjid.mecategories/problem-solving'>problem-solving</a>/</div></header>
           <nav class="terminal-menu">
             <ul vocab="https://schema.org/" typeof="BreadcrumbList">
                 
-                <li><a href="https://heytamjid.github.io/projects/" typeof="ListItem">projects/</a></li>
+                <li><a href="https://tamjid.me/projects/" typeof="ListItem">projects/</a></li>
                 
-                <li><a href="https://heytamjid.github.io/posts/" typeof="ListItem">posts/</a></li>
+                <li><a href="https://tamjid.me/posts/" typeof="ListItem">posts/</a></li>
                 
-                <li><a href="https://heytamjid.github.io/pasta/" typeof="ListItem">pasta/</a></li>
+                <li><a href="https://tamjid.me/pasta/" typeof="ListItem">pasta/</a></li>
                 
-                <li><a href="https://heytamjid.github.io/reminders/" typeof="ListItem">ذكر/</a></li>
+                <li><a href="https://tamjid.me/reminders/" typeof="ListItem">ذكر/</a></li>
                 
             </ul>
           </nav>
@@ -65,7 +65,7 @@
         <div class="post">
             <p>
                 <div class="date">Mar. 8, 2025</div>    
-                <h1><a href="https://heytamjid.github.io/posts/01-matrix/" title="01 Matrix on LeetCode: Multi-Source BFS and Two-pass DP Solution">01 Matrix on LeetCode: Multi-Source BFS and Two-pass DP Solution</a></h1>                                
+                <h1><a href="https://tamjid.me/posts/01-matrix/" title="01 Matrix on LeetCode: Multi-Source BFS and Two-pass DP Solution">01 Matrix on LeetCode: Multi-Source BFS and Two-pass DP Solution</a></h1>                                
                 In Multi-source BFS, we start from multiple source nodes simultaneously instead of starting from a single source node, In this case, all the 0 cells act as the initial sources, and we expand outward in all directions. This works efficiently because BFS inherently explores all nodes layer by layer, guaranteeing that the first time we reach a cell, it is via the shortest possible path. Unlike the naive approach of running BFS separately for each 1 cell (which would be too slow), multi-source BFS spreads out from all 0s in parallel. Again, BFS processes each cell exactly once so this solution will run in O(m*n). As of the DP solution, <strong>the recursive approach must NOT create cyclic dependencies.</strong> When we are computing the distance for a cell, we are making recursive calls to all its neighbors, right?. But if two cells depend on each other, for example, cell A calls cell B, which in turn calls cell A (or another cell that eventually calls A) before A’s value is finalized, you’ll end up in an infinite loop or incorrect results because the dp value for A is still set to –1 when B checks it. In recursive DP, if we do not <strong>ensure that all dependent subproblems are solved before the current cell’s computation,</strong> the recursion can “chase its tail” or run infinitely and never reach a stable solution.
             </p>
         </div>
@@ -75,7 +75,7 @@
         <div class="post">
             <p>
                 <div class="date">Mar. 21, 2024</div>    
-                <h1><a href="https://heytamjid.github.io/posts/dungeon-game/" title="Dungeon Game on LeetCode : Finding The Right Question To Ask in DP Problems">Dungeon Game on LeetCode : Finding The Right Question To Ask in DP Problems</a></h1>                                
+                <h1><a href="https://tamjid.me/posts/dungeon-game/" title="Dungeon Game on LeetCode : Finding The Right Question To Ask in DP Problems">Dungeon Game on LeetCode : Finding The Right Question To Ask in DP Problems</a></h1>                                
                 <p>I have been solving DP problems for last 2 days and guess what, they are really cooool and fun to solve. Previously I didn’t enjoy this much while solving topic-wise problems on Prefix Sum or Sliding Window. <a href="https://leetcode.com/problems/dungeon-game/description/">Dungeon Game</a> is my first solved bottom-up DP problem. It’s marked as hard, but I believe it is sort of quite medium level problem.</p>
 <p>In DP problems, the main part is to find out <strong>what to remember</strong> <a href="https://youtu.be/YBSt1jYwVfU?si=VWSg2Xta6vAQrQXk&amp;t=1090">as Errichto said</a>. And for that, you have to know <strong>the right question to ask</strong>.</p>
             </p>
