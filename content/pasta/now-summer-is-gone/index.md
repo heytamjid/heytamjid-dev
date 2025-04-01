@@ -2,7 +2,7 @@
 title = "Now Summer Is Gone"
 date = "2025-02-25"
 categories = ["pasta"]
-tags = ["poem"]
+tags = ["poems"]
 +++
 
 
