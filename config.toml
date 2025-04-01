@@ -1,4 +1,4 @@
-baseurl = "https://tamjid.me"
+baseurl = "https://tamjid.me/"
 title = "tamjid.me"
 theme = "hugo-theme-console"
 languageCode = "en-us"
@@ -18,18 +18,18 @@ publishDir = "docs"
 
   [[params.navlinks]]
   name = "projects/"
-  url = "/projects/"
+  url = "projects/"
 
   [[params.navlinks]]
   name = "posts/"
-  url = "/posts/"
+  url = "posts/"
 
   [[params.navlinks]]
   name = "pasta/"
-  url = "/pasta/"
+  url = "pasta/"
   
   [[params.navlinks]]
   name = "ذكر/"
-  url = "/reminders/"
+  url = "reminders/"
 
   
